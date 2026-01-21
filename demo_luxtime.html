@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxTime - Montres de Luxe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fff;
+        }
+
+        header {
+            background: #1a1a1a;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 300;
+            color: white;
+            letter-spacing: 3px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95em;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #c9a961;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 150px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            font-weight: 200;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: #2c3e50;
+            padding: 18px 50px;
+            text-decoration: none;
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+
+        .cta-btn:hover {
+            background: transparent;
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .product-card:nth-child(1) .product-image {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+
+        .product-card:nth-child(2) .product-image {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 100%);
+        }
+
+        .product-card:nth-child(3) .product-image {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+        }
+
+        .product-card:nth-child(4) .product-image {
+            background: linear-gradient(135deg, #1c92d2 0%, #f2fcfe 100%);
+        }
+
+        .product-card:nth-child(5) .product-image {
+            background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+        }
+
+        .product-card:nth-child(6) .product-image {
+            background: linear-gradient(135deg, #000000 0%, #434343 100%);
+        }
+
+        .product-info {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .product-brand {
+            font-size: 0.9em;
+            color: #999;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .product-price {
+            font-size: 1.8em;
+            color: #c9a961;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .buy-btn {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 35px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid #1a1a1a;
+        }
+
+        .buy-btn:hover {
+            background: white;
+            color: #1a1a1a;
+        }
+
+        .features {
+            background: #f8f8f8;
+            padding: 100px 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .feature-item p {
+            color: #666;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .newsletter {
+            background: #1a1a1a;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .newsletter p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            font-size: 1em;
+            letter-spacing: 1px;
+        }
+
+        .newsletter-form button {
+            background: #c9a961;
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: #b89851;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: #666;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">LUXTIME</div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">ACCUEIL</a></li>
+                    <li><a href="#collection">COLLECTION</a></li>
+                    <li><a href="#about">À PROPOS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="accueil">
+        <h1>LUXTIME</h1>
+        <p>L'excellence horlogère à votre poignet</p>
+        <a href="#collection" class="cta-btn">DÉCOUVRIR</a>
+    </section>
+
+    <div class="container" id="collection">
+        <h2 class="section-title">NOTRE COLLECTION</h2>
+        <p class="section-subtitle">Montres de prestige pour hommes et femmes</p>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">CHRONOGRAPH</div>
+                <div class="product-info">
+                    <p class="product-brand">LUXTIME</p>
+                    <h3 class="product-name">Heritage Blue</h3>
+                    <p class="product-price">3 490€</p>
+                    <a href="#" class="buy-btn">ACHETER</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">CLASSIC</div>
+                <div class="product-info">
+                    <p class="product-brand">LUXTIME</p>
+                    <h3 class="product-name">Midnight Black</h3>
+                    <p class="product-price">2 890€</p>
+                    <a href="#" class="buy-btn">ACHETER</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">SPORT</div>
+                <div class="product-info">
+                    <p class="product-brand">LUXTIME</p>
+                    <h3 class="product-name">Titanium Pro</h3>
+                    <p class="product-price">4 200€</p>
+                    <a href="#" class="buy-btn">ACHETER</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">ELEGANCE</div>
+                <div class="product-info">
+                    <p class="product-brand">LUXTIME</p>
+                    <h3 class="product-name">Crystal Rose</h3>
+                    <p class="product-price">3 100€</p>
+                    <a href="#" class="buy-btn">ACHETER</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">AUTOMATIC</div>
+                <div class="product-info">
+                    <p class="product-brand">LUXTIME</p>
+                    <h3 class="product-name">Royal Edition</h3>
+                    <p class="product-price">5 800€</p>
+                    <a href="#" class="buy-btn">ACHETER</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">LIMITED</div>
+                <div class="product-info">
+                    <p class="product-brand">LUXTIME</p>
+                    <h3 class="product-name">Diamond Elite</h3>
+                    <p class="product-price">8 500€</p>
+                    <a href="#" class="buy-btn">ACHETER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="features" id="about">
+        <h2 class="section-title">POURQUOI LUXTIME ?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>Savoir-Faire Suisse</h3>
+                <p>Nos montres sont assemblées à la main par des maîtres horlogers avec plus de 30 ans d'expérience.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Matériaux Premium</h3>
+                <p>Acier inoxydable 316L, saphir antireflet, cuir véritable et métaux précieux.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Garantie 5 Ans</h3>
+                <p>Toutes nos montres bénéficient d'une garantie internationale de 5 ans.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Livraison Sécurisée</h3>
+                <p>Livraison express assurée dans le monde entier avec écrin de luxe offert.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter" id="contact">
+        <h2>REJOIGNEZ LE CLUB LUXTIME</h2>
+        <p>Recevez nos offres exclusives et découvrez nos nouveautés en avant-première</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Votre adresse email" required>
+            <button type="submit">S'INSCRIRE</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Mentions légales</a>
+                <a href="#">CGV</a>
+                <a href="#">Livraison</a>
+                <a href="#">Retours</a>
+                <a href="#">SAV</a>
+            </div>
+            <p>&copy; 2025 LuxTime - Montres de Luxe. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
