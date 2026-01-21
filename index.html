@@ -12,23 +12,28 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #1a1a1a;
-            background: #fff;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         header {
-            background: #1a1a1a;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
             padding: 20px 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .header-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
@@ -37,290 +42,438 @@
         }
 
         .logo {
-            font-size: 1.8em;
-            font-weight: 300;
-            color: white;
+            font-size: 2em;
+            font-weight: bold;
             letter-spacing: 3px;
+            color: #d4af37;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 40px;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            font-size: 0.95em;
-            letter-spacing: 1px;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #c9a961;
+            color: #d4af37;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #d4af37;
+            color: #1a1a1a;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8em;
         }
 
         .hero {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            padding: 150px 20px;
+            background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)),
+                        url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1200') center/cover;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            color: white;
         }
 
         .hero h1 {
-            font-size: 4.5em;
-            font-weight: 200;
+            font-size: 4em;
             margin-bottom: 20px;
-            letter-spacing: 5px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
         }
 
         .hero p {
             font-size: 1.5em;
-            font-weight: 300;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
+            color: #d4af37;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
         }
 
         .cta-btn {
-            display: inline-block;
-            background: white;
-            color: #2c3e50;
-            padding: 18px 50px;
-            text-decoration: none;
+            background: #d4af37;
+            color: #1a1a1a;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
             font-size: 1.1em;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-            border: 2px solid white;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background 0.3s;
+            font-weight: bold;
         }
 
         .cta-btn:hover {
-            background: transparent;
-            color: white;
+            background: #e6c547;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 100px 20px;
+            padding: 60px 20px;
         }
 
-        .section-title {
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 2.5em;
             text-align: center;
-            font-size: 3em;
-            margin-bottom: 20px;
-            font-weight: 300;
-            letter-spacing: 3px;
+            margin-bottom: 50px;
+            color: #1a1a1a;
+            position: relative;
+            padding-bottom: 15px;
         }
 
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 60px;
-            font-weight: 300;
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #d4af37;
         }
 
-        .products-grid {
+        .collection-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
 
-        .product-card {
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            transition: all 0.3s;
+        .watch-card {
+            background: white;
+            border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .product-card:hover {
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            transform: translateY(-5px);
+        .watch-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
-        .product-image {
+        .watch-image {
             width: 100%;
-            height: 350px;
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            height: 250px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5em;
-            letter-spacing: 2px;
-            font-weight: 300;
+            font-size: 3em;
+            color: #d4af37;
         }
 
-        .product-card:nth-child(1) .product-image {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        .watch-content {
+            padding: 25px;
         }
 
-        .product-card:nth-child(2) .product-image {
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 100%);
-        }
-
-        .product-card:nth-child(3) .product-image {
-            background: linear-gradient(135deg, #232526 0%, #414345 100%);
-        }
-
-        .product-card:nth-child(4) .product-image {
-            background: linear-gradient(135deg, #1c92d2 0%, #f2fcfe 100%);
-        }
-
-        .product-card:nth-child(5) .product-image {
-            background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
-        }
-
-        .product-card:nth-child(6) .product-image {
-            background: linear-gradient(135deg, #000000 0%, #434343 100%);
-        }
-
-        .product-info {
-            padding: 30px;
-            text-align: center;
-        }
-
-        .product-brand {
+        .watch-category {
+            color: #d4af37;
             font-size: 0.9em;
-            color: #999;
-            letter-spacing: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 10px;
         }
 
-        .product-name {
+        .watch-name {
             font-size: 1.5em;
+            color: #1a1a1a;
             margin-bottom: 15px;
-            font-weight: 400;
         }
 
-        .product-price {
+        .watch-price {
             font-size: 1.8em;
-            color: #c9a961;
-            font-weight: 300;
+            color: #d4af37;
+            font-weight: bold;
             margin-bottom: 20px;
         }
 
-        .buy-btn {
-            display: inline-block;
+        .add-to-cart-btn {
+            width: 100%;
             background: #1a1a1a;
-            color: white;
-            padding: 12px 35px;
-            text-decoration: none;
-            letter-spacing: 1px;
+            color: #d4af37;
+            padding: 12px;
+            border: 2px solid #d4af37;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
             transition: all 0.3s;
-            border: 2px solid #1a1a1a;
         }
 
-        .buy-btn:hover {
-            background: white;
+        .add-to-cart-btn:hover {
+            background: #d4af37;
             color: #1a1a1a;
         }
 
-        .features {
-            background: #f8f8f8;
-            padding: 100px 20px;
+        .add-to-cart-btn.added {
+            background: #4CAF50;
+            border-color: #4CAF50;
+            color: white;
         }
 
-        .features-grid {
+        .why-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .why-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .why-card {
             text-align: center;
         }
 
-        .feature-item h3 {
-            font-size: 1.5em;
+        .why-card h3 {
+            color: #1a1a1a;
             margin-bottom: 15px;
-            font-weight: 400;
+            font-size: 1.3em;
         }
 
-        .feature-item p {
+        .why-card p {
             color: #666;
             line-height: 1.8;
-            font-weight: 300;
         }
 
         .newsletter {
-            background: #1a1a1a;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
-            padding: 80px 20px;
+            padding: 60px 40px;
+            border-radius: 10px;
             text-align: center;
         }
 
-        .newsletter h2 {
-            font-size: 2.5em;
+        .newsletter h3 {
+            font-size: 2em;
             margin-bottom: 20px;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        .newsletter p {
-            font-size: 1.2em;
-            margin-bottom: 40px;
-            font-weight: 300;
         }
 
         .newsletter-form {
-            max-width: 500px;
-            margin: 0 auto;
             display: flex;
             gap: 10px;
+            max-width: 500px;
+            margin: 30px auto;
         }
 
         .newsletter-form input {
             flex: 1;
-            padding: 15px 20px;
+            padding: 12px;
             border: none;
-            font-size: 1em;
-            letter-spacing: 1px;
+            border-radius: 5px;
         }
 
         .newsletter-form button {
-            background: #c9a961;
-            color: white;
-            padding: 15px 35px;
+            background: #d4af37;
+            color: #1a1a1a;
+            padding: 12px 30px;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
-            letter-spacing: 1px;
+            font-weight: bold;
             transition: background 0.3s;
         }
 
         .newsletter-form button:hover {
-            background: #b89851;
+            background: #e6c547;
+        }
+
+        /* Modal Panier */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-modal.show {
+            display: flex;
+        }
+
+        .cart-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 15px;
+        }
+
+        .cart-header h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            color: #1a1a1a;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-info h4 {
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-info p {
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .remove-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: #cc0000;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .cart-total {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #d4af37;
+            text-align: right;
+        }
+
+        .cart-total p {
+            font-size: 1.5em;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        .cart-total .amount {
+            color: #d4af37;
+            font-size: 1.8em;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #1a1a1a;
+            color: #d4af37;
+            padding: 15px;
+            border: 2px solid #d4af37;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #d4af37;
+            color: #1a1a1a;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease;
+            z-index: 3000;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         footer {
-            background: #0a0a0a;
-            color: #666;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #999;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
+            background: #1a1a1a;
             color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -328,17 +481,16 @@
                 font-size: 2.5em;
             }
 
-            nav ul {
-                gap: 20px;
+            .collection-grid {
+                grid-template-columns: 1fr;
             }
 
             .newsletter-form {
                 flex-direction: column;
             }
 
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
+            nav ul {
+                gap: 15px;
             }
         }
     </style>
@@ -351,128 +503,234 @@
                 <ul>
                     <li><a href="#accueil">ACCUEIL</a></li>
                     <li><a href="#collection">COLLECTION</a></li>
-                    <li><a href="#about">À PROPOS</a></li>
+                    <li><a href="#pourquoi">À PROPOS</a></li>
                     <li><a href="#contact">CONTACT</a></li>
+                    <li class="cart-icon" onclick="openCart()">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero" id="accueil">
+    <section id="accueil" class="hero">
         <h1>LUXTIME</h1>
         <p>L'excellence horlogère à votre poignet</p>
-        <a href="#collection" class="cta-btn">DÉCOUVRIR</a>
+        <button class="cta-btn" onclick="document.getElementById('collection').scrollIntoView({behavior: 'smooth'})">DÉCOUVRIR</button>
     </section>
 
-    <div class="container" id="collection">
-        <h2 class="section-title">NOTRE COLLECTION</h2>
-        <p class="section-subtitle">Montres de prestige pour hommes et femmes</p>
-        
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">CHRONOGRAPH</div>
-                <div class="product-info">
-                    <p class="product-brand">LUXTIME</p>
-                    <h3 class="product-name">Heritage Blue</h3>
-                    <p class="product-price">3 490€</p>
-                    <a href="#" class="buy-btn">ACHETER</a>
+    <div class="container">
+        <section id="collection">
+            <h2>Notre Collection</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 40px;">Montres de prestige pour hommes et femmes</p>
+            <div class="collection-grid" id="collectionGrid">
+                <!-- Les montres seront générées par JavaScript -->
+            </div>
+        </section>
+
+        <section id="pourquoi">
+            <div class="why-section">
+                <h2>Pourquoi LuxTime ?</h2>
+                <div class="why-grid">
+                    <div class="why-card">
+                        <h3>Savoir-Faire Suisse</h3>
+                        <p>Nos montres sont assemblées à la main par des maîtres horlogers avec plus de 30 ans d'expérience.</p>
+                    </div>
+                    <div class="why-card">
+                        <h3>Matériaux Premium</h3>
+                        <p>Acier inoxydable 316L, saphir antireflet, cuir véritable et métaux précieux.</p>
+                    </div>
+                    <div class="why-card">
+                        <h3>Garantie 5 Ans</h3>
+                        <p>Toutes nos montres bénéficient d'une garantie internationale de 5 ans.</p>
+                    </div>
+                    <div class="why-card">
+                        <h3>Livraison Sécurisée</h3>
+                        <p>Livraison express assurée dans le monde entier avec écrin de luxe offert.</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="product-card">
-                <div class="product-image">CLASSIC</div>
-                <div class="product-info">
-                    <p class="product-brand">LUXTIME</p>
-                    <h3 class="product-name">Midnight Black</h3>
-                    <p class="product-price">2 890€</p>
-                    <a href="#" class="buy-btn">ACHETER</a>
-                </div>
+        <section id="newsletter">
+            <div class="newsletter">
+                <h3>Rejoignez le Club LuxTime</h3>
+                <p>Recevez nos offres exclusives et découvrez nos nouveautés en avant-première</p>
+                <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                    <input type="email" placeholder="Votre email" required>
+                    <button type="submit">S'INSCRIRE</button>
+                </form>
             </div>
+        </section>
+    </div>
 
-            <div class="product-card">
-                <div class="product-image">SPORT</div>
-                <div class="product-info">
-                    <p class="product-brand">LUXTIME</p>
-                    <h3 class="product-name">Titanium Pro</h3>
-                    <p class="product-price">4 200€</p>
-                    <a href="#" class="buy-btn">ACHETER</a>
-                </div>
+    <!-- Modal Panier -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Votre Sélection</h2>
+                <button class="close-btn" onclick="closeCart()">✕</button>
             </div>
-
-            <div class="product-card">
-                <div class="product-image">ELEGANCE</div>
-                <div class="product-info">
-                    <p class="product-brand">LUXTIME</p>
-                    <h3 class="product-name">Crystal Rose</h3>
-                    <p class="product-price">3 100€</p>
-                    <a href="#" class="buy-btn">ACHETER</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">AUTOMATIC</div>
-                <div class="product-info">
-                    <p class="product-brand">LUXTIME</p>
-                    <h3 class="product-name">Royal Edition</h3>
-                    <p class="product-price">5 800€</p>
-                    <a href="#" class="buy-btn">ACHETER</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">LIMITED</div>
-                <div class="product-info">
-                    <p class="product-brand">LUXTIME</p>
-                    <h3 class="product-name">Diamond Elite</h3>
-                    <p class="product-price">8 500€</p>
-                    <a href="#" class="buy-btn">ACHETER</a>
-                </div>
+            <div id="cartItems">
+                <!-- Les articles du panier seront affichés ici -->
             </div>
         </div>
     </div>
 
-    <section class="features" id="about">
-        <h2 class="section-title">POURQUOI LUXTIME ?</h2>
-        <div class="features-grid">
-            <div class="feature-item">
-                <h3>Savoir-Faire Suisse</h3>
-                <p>Nos montres sont assemblées à la main par des maîtres horlogers avec plus de 30 ans d'expérience.</p>
-            </div>
-            <div class="feature-item">
-                <h3>Matériaux Premium</h3>
-                <p>Acier inoxydable 316L, saphir antireflet, cuir véritable et métaux précieux.</p>
-            </div>
-            <div class="feature-item">
-                <h3>Garantie 5 Ans</h3>
-                <p>Toutes nos montres bénéficient d'une garantie internationale de 5 ans.</p>
-            </div>
-            <div class="feature-item">
-                <h3>Livraison Sécurisée</h3>
-                <p>Livraison express assurée dans le monde entier avec écrin de luxe offert.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="newsletter" id="contact">
-        <h2>REJOIGNEZ LE CLUB LUXTIME</h2>
-        <p>Recevez nos offres exclusives et découvrez nos nouveautés en avant-première</p>
-        <form class="newsletter-form">
-            <input type="email" placeholder="Votre adresse email" required>
-            <button type="submit">S'INSCRIRE</button>
-        </form>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#">Mentions légales</a>
-                <a href="#">CGV</a>
-                <a href="#">Livraison</a>
-                <a href="#">Retours</a>
-                <a href="#">SAV</a>
-            </div>
-            <p>&copy; 2025 LuxTime - Montres de Luxe. Tous droits réservés.</p>
-        </div>
+    <footer id="contact">
+        <h3>Contactez-Nous</h3>
+        <p>📧 Email : <a href="mailto:contact@luxtime.fr">contact@luxtime.fr</a></p>
+        <p>📞 Tél : +33 1 23 45 67 89</p>
+        <p style="margin-top: 30px; border-top: 1px solid #d4af37; padding-top: 20px;">
+            <a href="#">Mentions légales</a> | 
+            <a href="#">CGV</a> | 
+            <a href="#">Livraison</a> | 
+            <a href="#">Retours</a> | 
+            <a href="#">SAV</a>
+        </p>
+        <p style="margin-top: 20px;">&copy; 2025 LuxTime - Montres de Luxe. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        // Données des montres
+        const watches = [
+            { id: 1, category: 'CHRONOGRAPH', name: 'Heritage Blue', price: 3490 },
+            { id: 2, category: 'CLASSIC', name: 'Midnight Black', price: 2890 },
+            { id: 3, category: 'SPORT', name: 'Titanium Pro', price: 4200 },
+            { id: 4, category: 'ELEGANCE', name: 'Crystal Rose', price: 3100 },
+            { id: 5, category: 'AUTOMATIC', name: 'Royal Edition', price: 5800 },
+            { id: 6, category: 'LIMITED', name: 'Diamond Elite', price: 8500 }
+        ];
+
+        // Initialiser le panier depuis localStorage
+        let cart = JSON.parse(localStorage.getItem('luxtime-cart')) || [];
+
+        // Afficher les montres
+        function displayWatches() {
+            const grid = document.getElementById('collectionGrid');
+            grid.innerHTML = watches.map(watch => `
+                <div class="watch-card">
+                    <div class="watch-image">⌚</div>
+                    <div class="watch-content">
+                        <div class="watch-category">${watch.category}</div>
+                        <div class="watch-name">LUXTIME</div>
+                        <div class="watch-name" style="font-size: 1.3em; margin-top: 10px;">${watch.name}</div>
+                        <div class="watch-price">${watch.price}€</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${watch.id})">ACHETER</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Ajouter au panier
+        function addToCart(watchId) {
+            const watch = watches.find(w => w.id === watchId);
+            cart.push(watch);
+            localStorage.setItem('luxtime-cart', JSON.stringify(cart));
+            updateCartCount();
+            showNotification(`${watch.name} ajoutée à votre sélection !`);
+        }
+
+        // Mettre à jour le compteur du panier
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        // Ouvrir le panier
+        function openCart() {
+            const modal = document.getElementById('cartModal');
+            const cartItems = document.getElementById('cartItems');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="cart-empty">Votre sélection est vide</div>';
+            } else {
+                let total = 0;
+                let html = '';
+
+                cart.forEach((watch, index) => {
+                    total += watch.price;
+                    html += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <h4>${watch.name}</h4>
+                                <p>${watch.price}€</p>
+                            </div>
+                            <button class="remove-btn" onclick="removeFromCart(${index})">Retirer</button>
+                        </div>
+                    `;
+                });
+
+                html += `
+                    <div class="cart-total">
+                        <p>Total : <span class="amount">${total}€</span></p>
+                        <button class="checkout-btn" onclick="checkout()">Procéder à la Commande</button>
+                    </div>
+                `;
+
+                cartItems.innerHTML = html;
+            }
+
+            modal.classList.add('show');
+        }
+
+        // Fermer le panier
+        function closeCart() {
+            document.getElementById('cartModal').classList.remove('show');
+        }
+
+        // Retirer du panier
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('luxtime-cart', JSON.stringify(cart));
+            updateCartCount();
+            openCart(); // Rafraîchir l'affichage
+            showNotification('Montre retirée de votre sélection');
+        }
+
+        // Procéder à la commande
+        function checkout() {
+            if (cart.length === 0) return;
+
+            const total = cart.reduce((sum, watch) => sum + watch.price, 0);
+            alert(`Merci pour votre intérêt !\n\nVotre sélection (${cart.length} montre(s)) pour un total de ${total}€ a bien été enregistrée.\n\nNous vous contacterons très bientôt pour finaliser votre commande.`);
+            
+            // Vider le panier
+            cart = [];
+            localStorage.setItem('luxtime-cart', JSON.stringify(cart));
+            updateCartCount();
+            closeCart();
+        }
+
+        // Afficher une notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Newsletter
+        function handleNewsletter(event) {
+            event.preventDefault();
+            showNotification('✓ Inscription réussie ! Merci de votre intérêt.');
+            event.target.reset();
+        }
+
+        // Fermer le panier en cliquant en dehors
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCart();
+            }
+        });
+
+        // Initialisation
+        displayWatches();
+        updateCartCount();
+    </script>
 </body>
 </html>
